@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('materias', function (Blueprint $table) {
-            $table->id('idMateria');
-            $table->string('nombre',255);
-            $table->int('duracion'); //meses
-            $table->string('descripcion',255);
+        Schema::create('usuarios', function (Blueprint $table) {
+            $table->id('idUsuario');
+            $table->string('nombreUsuario',100); 
+            $table->string('contrasena',255); 
+            $table->string('token',255)->nullable(); 
+            $table->integer('tipo'); 
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('materias');
+        Schema::dropIfExists('usuarios');
     }
 };

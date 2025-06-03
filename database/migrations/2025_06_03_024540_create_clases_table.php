@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->foreignId('idMateriaDetalle')
             ->references('idMateriaDetalle')
-            ->on('materiaDetalle');
+            ->on('materia_detalle');
 
 
             $table->timestamps();
