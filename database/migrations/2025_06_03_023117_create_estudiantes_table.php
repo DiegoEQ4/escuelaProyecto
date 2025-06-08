@@ -24,8 +24,11 @@ return new class extends Migration
             ->on('usuarios');
 
             $table->foreignId('idGrado')
+            ->nullable()
             ->references('idGrado')
             ->on('grados');
+            $table->integer('habilitado'); 
+
         });
     }
 

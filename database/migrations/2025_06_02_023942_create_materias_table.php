@@ -17,6 +17,8 @@ return new class extends Migration
             $table->integer('duracion'); //meses
             $table->string('descripcion',255);
             $table->timestamps();
+            $table->integer('habilitado'); 
+
         });
     }
 

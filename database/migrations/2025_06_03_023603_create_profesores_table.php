@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('titulo',255);
             $table->string('telefono',9);
             $table->timestamps();
+            $table->integer('habilitado'); 
+
 
             $table->foreignId('idUsuario')
             ->references('idUsuario')

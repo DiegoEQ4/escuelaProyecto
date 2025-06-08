@@ -19,6 +19,8 @@ return new class extends Migration
             $table->double('orden');
             $table->integer('tiempo'); //AÑO EN QUE SE IMPARTIO
             $table->timestamps();
+            $table->integer('habilitado'); 
+
         });
     }
 

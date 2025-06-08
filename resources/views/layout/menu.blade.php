@@ -23,7 +23,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link" href="{{ route('usuarios.index') }}">Usuarios</a>
         </li>
       </ul>
     </div>

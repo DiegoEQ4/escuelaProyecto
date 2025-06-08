@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('contrasena',255); 
             $table->string('token',255)->nullable(); 
             $table->integer('tipo'); 
+            $table->integer('habilitado'); 
             $table->timestamps();
         });
     }

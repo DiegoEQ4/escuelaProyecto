@@ -25,6 +25,9 @@ return new class extends Migration
             ->on('profesores');
             
             $table->timestamps();
+
+            $table->integer('habilitado'); 
+
         });
     }
 

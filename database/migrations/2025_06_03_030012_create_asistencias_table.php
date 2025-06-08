@@ -21,6 +21,8 @@ return new class extends Migration
             ->on('materia_detalle');
             
             $table->timestamps();
+            $table->integer('habilitado'); 
+
         });
     }
 

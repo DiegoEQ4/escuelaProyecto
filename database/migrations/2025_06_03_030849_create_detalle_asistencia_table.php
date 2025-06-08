@@ -25,6 +25,8 @@ return new class extends Migration
             ->references('idAsistencia')
             ->on('asistencias');
             $table->timestamps();
+
+            $table->integer('habilitado'); 
         });
     }
 

@@ -23,6 +23,9 @@ return new class extends Migration
 
 
             $table->timestamps();
+
+            $table->integer('habilitado'); 
+
         });
     }
 
