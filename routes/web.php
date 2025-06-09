@@ -9,7 +9,6 @@ Route::get('/materias',[VistasController::class,'materiaView']);
 
 //MANEJO DE USUARIOS 
 Route::get('/usuarios',[UsuariosController::class,'index'])->name('usuarios.index');
-Route::get('/usuarios/crear', [UsuariosController::class,'crearView'])->name('usuarios.crear');
-Route::post('/usuarios/store',[UsuariosController::class,'store'])->name('usuarios.store');
+Route::post('/usuarios',[UsuariosController::class,'store'])->name('usuarios.store');
 Route::post('/usuarios/update/{id}',[UsuariosController::class,'update'])->name('usuarios.update');
-Route::post('/usuarios/delete/{id}',[UsuariosController::class,'delete'])->name('usuarios.delete');
+Route::get('/usuarios/delete/{id}',[UsuariosController::class,'delete'])->name('usuarios.delete');

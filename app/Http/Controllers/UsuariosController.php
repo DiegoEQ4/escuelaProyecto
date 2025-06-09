@@ -23,25 +23,24 @@ class UsuariosController extends Controller
         ]));
     }
 
-    function crearView(){
-
-        return (view('usuarios.crear'));
-    }
 
 
     function store(Request $request){
         
         $response = $this->service-> crearUsuario($request);
-        return $response;
+        return back();
 
     }
     function update(Request $request,$id){
 
         $response = $this->service-> actualizarUsuario($request,$id);
         return $response;
-    }
+    } 
     function delete(Request $request,int $id){
         $response = $this->service-> deshabilitarUsuario($id);
-        return $response;
+        // return $response;
+        return back();
+
+        
     }   
 }

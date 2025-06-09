@@ -24,7 +24,6 @@
   </thead>
     <tbody class="table-group-divider">
     @foreach ($response as $usuario)
-        @if ($usuario -> habilitado == 1)
         <tr>
             <th scope="row">{{ $numeral++ }}</th>
             <td>{{$usuario ->nombreUsuario}}</td>
@@ -33,17 +32,17 @@
                 <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarModal">
                     <b> <i class="bi bi-pencil-fill text-white"></i></b>
                 </button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#crearModal">
+                <a type="button" class="btn btn-danger" href="{{ route('usuarios.delete',$usuario ->idUsuario) }}">
                     <b> <i class="bi bi-trash3-fill"></i>
-                </button>
+                </a>
             </td>
         </tr>                       
-        @endif
     @endforeach
   </tbody>
 </table>
 
-<x-usuarios.modal-crear/>
-<x-usuarios.modal-editar/>
+{{-- <x-usuarios.modal-crear></x-usuarios.modal-crear> --}}
+<x-usuarios.modal-crear></x-usuarios.modal-crear>
+<x-usuarios.modal-editar></x-usuarios.modal-editar>
 @endsection()
 

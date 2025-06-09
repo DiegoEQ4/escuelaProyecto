@@ -17,11 +17,10 @@ return new class extends Migration
             $table->string('apellido',100);
             $table->string('correo',255);
             $table->date('fechaNacimiento');
-            $table->string('titulo',255);
-            $table->string('telefono',9);
+            $table->string('titulo',255)->nullable();
+            $table->string('telefono',9)->nullable();
             $table->timestamps();
             $table->integer('habilitado'); 
-
 
             $table->foreignId('idUsuario')
             ->references('idUsuario')

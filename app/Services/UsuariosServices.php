@@ -1,21 +1,24 @@
 <?php
 namespace App\Services;
 
+use App\Models\Estudiantes;
 use App\Models\Usuarios;
 use Illuminate\Support\Facades\Hash;
 
 class UsuariosServices {
 
     private $usuarioModel;
+    private $estudianteServices;
 
 
     public function __construct() {
         $this->usuarioModel = new Usuarios();
+        $this->estudianteServices = new EstudiantesServices();
     }
     
     function obtenerTodos()
     {   
-        $usuarios = $this -> usuarioModel -> all();
+        $usuarios = $this -> usuarioModel -> where('habilitado',1)->get();
         return $usuarios;
     }
 
@@ -27,7 +30,21 @@ class UsuariosServices {
         $usuario->contrasena = $request->contrasena;
         $usuario->tipo = (int)$request->tipo;
         $usuario->save();
-        return $usuario;
+        
+        $idUsuario = $usuario -> idUsuario;
+        
+        if($usuario -> tipo == 1){
+            $estudiante = [
+                "carnet"=> $request -> carnet,
+                "nombre"=> $request -> nombre,
+                "apellido"=> $request -> apellido,
+                "correo"=> $request -> correo,
+                "fechaNacimiento"=> $request -> fechaNacimiento,
+                "idUsuario"=>  $idUsuario ,
+            ];
+            $this -> estudianteServices -> crearEstudiante($estudiante);
+            return $estudiante;
+        }
     }
 
     function actualizarUsuario(object $request,int $id)
@@ -47,7 +64,6 @@ class UsuariosServices {
         $usuario->save();
         return 'hecho';
     }
-
 
 }
 
