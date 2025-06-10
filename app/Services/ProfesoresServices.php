@@ -39,13 +39,13 @@ class ProfesoresServices {
     {
         $profesor = $this->profesorModel->findOrFail($request->idUsuario);
         $profesor -> nombre = $request -> nombre;
-        $estudiante -> apellido = $request -> apellido;
-        $estudiante -> correo = $request -> correo;
-        $estudiante -> fechaNacimiento = $request -> fechaNacimiento;
-        $estudiante->save();
-        return $estudiante;
-        $usuario->save();
-        return $usuario;
+        $profesor -> apellido = $request -> apellido;
+        $profesor -> correo = $request -> correo;
+        $profesor -> fechaNacimiento = $request -> fechaNacimiento;
+        $profesor->save();
+        return $profesor;
+        // $usuario->save();
+        // return $usuario;
     }
 
     function deshabilitarUsuario(int $id)
