@@ -22,8 +22,7 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{{ route('usuarios.index') }}">Usuarios</a></li>
             <li><a class="dropdown-item" href="{{ route('estudiantes.index') }}">Estudiantes</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="{{ route('profesores.index') }}">Profesores</a></li>
           </ul>
         </li>
       </ul>

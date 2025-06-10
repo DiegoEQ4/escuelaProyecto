@@ -15,20 +15,17 @@ class EstudiantesController extends Controller
 
     //
     function index(){
-
         $response = $this->service-> obtenerTodos();
         return(view('estudiantes.index',[
         'response' => $response
         ]));
     }
     function update(Request $request){
-
         $response = $this->service-> actualizarEstudiante($request);
         return back();
     }
     function delete(int $id){
-
-        $response = $this->service-> deshabilitarUsuario($id);
+        $response = $this->service-> deshabilitarEstudiante($id);
         return back();
     }
     

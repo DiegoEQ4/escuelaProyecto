@@ -44,7 +44,7 @@ class EstudiantesServices {
         return $estudiante;
     }
 
-    function deshabilitarUsuario(int $id)
+    function deshabilitarEstudiante(int $id)
     {
         $estudiante = $this->estudianteModel->findOrFail($id);
         $estudiante->habilitado = 0;   
