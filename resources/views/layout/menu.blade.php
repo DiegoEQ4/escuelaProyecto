@@ -13,14 +13,15 @@
           <a class="nav-link" href="#">Materias</a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link" href="{{ route('usuarios.index') }}">Usuarios</a>
+          <a class="nav-link" href="#">Clases</a>
         </li>
         <li class="nav-item mx-2 dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Clases
+            Usuarios
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="{{ route('usuarios.index') }}">Usuarios</a></li>
+            <li><a class="dropdown-item" href="{{ route('estudiantes.index') }}">Estudiantes</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
