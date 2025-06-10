@@ -11,23 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('materia_detalle', function (Blueprint $table) {
-            $table->id('idMateriaDetalle');
+        Schema::create('detalle_asistencia', function (Blueprint $table) {
+            $table->id('idDetalleAsistencia');
+            $table->integer('estado');
+            $table->string('detalle');
 
-            $table->foreignId('idGrado')
-            ->references('idGrado')
-            ->on('grados');
-            $table->foreignId('idMateria')
-            ->references('idMateria')
-            ->on('materias');
-            $table->foreignId('carnetProfesor')
+
+            $table->foreignId('carnetEstudiante')
             ->references('carnet')
-            ->on('profesores');
-            
+            ->on('estudiantes');
+
+            $table->foreignId('idAsistencia')
+            ->references('idAsistencia')
+            ->on('asistencias');
             $table->timestamps();
 
             $table->integer('habilitado'); 
-
         });
     }
 
@@ -36,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('materia_detalle');
+        Schema::dropIfExists('detalle_asistencia');
     }
 };

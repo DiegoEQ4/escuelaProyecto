@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id('idUsuario');
             $table->string('nombreUsuario',100); 
             $table->string('contrasena',255); 
-            $table->string('token',255); 
+            $table->string('token',255)->nullable(); 
             $table->integer('tipo'); 
+            $table->integer('habilitado'); 
             $table->timestamps();
         });
     }

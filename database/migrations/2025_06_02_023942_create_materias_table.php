@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('materias', function (Blueprint $table) {
             $table->id('idMateria');
             $table->string('nombre',255);
-            $table->int('duracion'); //meses
+            $table->integer('duracion'); //meses
             $table->string('descripcion',255);
             $table->timestamps();
+            $table->integer('habilitado'); 
+
         });
     }
 

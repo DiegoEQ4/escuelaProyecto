@@ -12,14 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('profesores', function (Blueprint $table) {
-            $table->int('carnet')->primary();
+            $table->integer('carnet')->primary();
             $table->string('nombre',100);
             $table->string('apellido',100);
             $table->string('correo',255);
             $table->date('fechaNacimiento');
-            $table->string('titulo',255);
-            $table->string('telefono',9);
+            $table->string('titulo',255)->nullable();
+            $table->string('telefono',9)->nullable();
             $table->timestamps();
+            $table->integer('habilitado'); 
 
             $table->foreignId('idUsuario')
             ->references('idUsuario')

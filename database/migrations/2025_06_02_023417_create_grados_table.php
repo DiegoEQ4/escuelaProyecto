@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('grados', function (Blueprint $table) {
             $table->id('idGrado');
             $table->string('nombre');
-            $table->sring('seccion');
+            $table->string('seccion');
             $table->integer('cupos');
             $table->double('orden');
             $table->integer('tiempo'); //AÑO EN QUE SE IMPARTIO
             $table->timestamps();
+            $table->integer('habilitado'); 
+
         });
     }
 
