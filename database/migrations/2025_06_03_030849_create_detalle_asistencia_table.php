@@ -16,14 +16,14 @@ return new class extends Migration
             $table->integer('estado');
             $table->string('detalle');
 
-
-            $table->foreignId('carnetEstudiante')
+            $table->integer('carnetEstudiante');
+            $table->foreign('carnetEstudiante')
             ->references('carnet')
-            ->on('estudiantes');
+            ->on('estudiantes')-> onDelete('cascade');
 
             $table->foreignId('idAsistencia')
             ->references('idAsistencia')
-            ->on('asistencias');
+            ->on('asistencias')-> onDelete('cascade');
             $table->timestamps();
 
             $table->integer('habilitado'); 
