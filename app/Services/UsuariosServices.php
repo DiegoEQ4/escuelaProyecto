@@ -9,11 +9,13 @@ class UsuariosServices {
 
     private $usuarioModel;
     private $estudianteServices;
+    private $profesorServices;
 
 
     public function __construct() {
         $this->usuarioModel = new Usuarios();
         $this->estudianteServices = new EstudiantesServices();
+        $this->profesorServices = new ProfesoresServices();
     }
     
     function obtenerTodos()
@@ -44,6 +46,19 @@ class UsuariosServices {
             ];
             $this -> estudianteServices -> crearEstudiante($estudiante);
             return $estudiante;
+        }else if($usuario -> tipo == 2){
+            $profesor = [
+                "carnet"=> $request -> carnet,
+                "nombre"=> $request -> nombre,
+                "apellido"=> $request -> apellido,
+                "correo"=> $request -> correo,
+                "titulo"=> $request -> titulo,
+                "telefono"=> $request -> telefono,
+                "fechaNacimiento"=> $request -> fechaNacimiento,
+                "idUsuario"=>  $idUsuario ,
+            ];
+            $this -> profesorServices -> crearProfesor($profesor);
+            return $profesor;
         }
     }
 

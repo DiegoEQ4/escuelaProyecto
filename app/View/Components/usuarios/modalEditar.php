@@ -8,12 +8,15 @@ use Illuminate\View\Component;
 
 class modalEditar extends Component
 {
+    public $idUsuario;
+
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($idUsuario)
     {
         //
+        $this->idUsuario = $idUsuario; 
     }
 
     /**

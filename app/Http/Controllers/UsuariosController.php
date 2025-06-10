@@ -34,7 +34,8 @@ class UsuariosController extends Controller
     function update(Request $request,$id){
 
         $response = $this->service-> actualizarUsuario($request,$id);
-        return $response;
+        //return $response;
+        return back();
     } 
     function delete(Request $request,int $id){
         $response = $this->service-> deshabilitarUsuario($id);

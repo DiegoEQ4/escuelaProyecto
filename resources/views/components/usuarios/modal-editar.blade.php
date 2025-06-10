@@ -1,4 +1,6 @@
-<div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="miModalLabel" aria-hidden="true">
+@props(['idUsuario'])   
+
+<div class="modal fade" id="editarModal-{{ $idUsuario }}" tabindex="-1" aria-labelledby="miModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- modal-lg para mejor visual en pantallas grandes -->
         <div class="modal-content">
         
@@ -7,11 +9,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
 
-            <form action="{{ route('usuarios.update',1) }}" method="POST">
+            <form action="{{ route('usuarios.update',$idUsuario) }}" method="POST">
                 @csrf
 
                 <div class="modal-body">
-                    <input type="hidden" name="idUsuario" id="editarIdUsuario"> <!-- ID oculto -->
+                    <input type="hidden" name="idUsuario" id="editarIdUsuario" value="{{ $idUsuario }}"> <!-- ID oculto -->
 
                     <div class="mb-3">
                         <label for="editarNombreUsuario" class="form-label">Nombre de Usuario</label>
@@ -26,9 +28,9 @@
                     <div class="mb-3">
                         <label for="editarTipo" class="form-label">Tipo de Usuario</label>
                         <select class="form-select" name="tipo" id="editarTipo" required>
-                            <option value="1">Administrador</option>
+                            <option value="3">Administrador</option>
                             <option value="2">Profesor</option>
-                            <option value="3">Estudiante</option>
+                            <option value="1">Alumno</option>
                             <!-- Agregá más si tenés otros tipos -->
                         </select>
                     </div>
@@ -38,7 +40,6 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                 </div>
-
             </form>
         </div>
     </div>
