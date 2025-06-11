@@ -19,13 +19,14 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nombre</th>
-      <th scope="col">Descripción</th>
-      <th scope="col">Duracion</th>
-      <th scope="col">Acciones</th>
+      <th scope="col">Seccion</th>
+      <th scope="col">Cupos</th>
+      <th scope="col">Año Lectivo</th>
+      <th scope="col">Acción</th>
     </tr>
   </thead>
     <tbody class="table-group-divider">
-    @foreach ($response as $materia)
+    @foreach ($response as $grados)
         <tr>
             <th scope="row">{{ $numeral++ }}</th>
             <td>{{$materia ->nombre}}</td>

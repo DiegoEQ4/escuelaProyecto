@@ -62,7 +62,7 @@ class UsuariosServices {
         }
     }
 
-    function actualizarUsuario(object $request,int $id)
+    function actualizarUsuario(object $request)
     {
         $usuario = $this->usuarioModel->findOrFail($request->idUsuario);
         $usuario->nombreUsuario = $request->nombreUsuario;      

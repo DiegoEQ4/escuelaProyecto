@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('materia_detalle', function (Blueprint $table) {
             $table->id('idMateriaDetalle');
 
+            
+
             $table->foreignId('idGrado')
             ->references('idGrado')
             ->on('grados');
