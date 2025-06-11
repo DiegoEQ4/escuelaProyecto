@@ -6,6 +6,10 @@
     $numeral = 1;
     $tipos = [1 => 'Alumno', 2 => 'Profesor', 3 => 'Administrador'];
 @endphp
+
+<h2>Administración de usuarios</h2>
+
+
 <section class="text-end my-2">
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearModal">
          <b> <i class="bi bi-plus-circle"></i> Agregar </b>

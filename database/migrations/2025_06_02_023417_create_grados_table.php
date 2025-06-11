@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('seccion');
             $table->integer('cupos');
-            $table->double('orden');
+            $table->integer('orden');
             $table->integer('tiempo'); //AÑO EN QUE SE IMPARTIO
             $table->timestamps();
             $table->integer('habilitado'); 
