@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->foreignId('idMateriaDetalle')
             ->references('idMateriaDetalle')
-            ->on('materia_detalle');
+            ->on('materia_detalle')-> onDelete('cascade') ;
 
 
             $table->timestamps();

@@ -4,6 +4,8 @@
 
 use App\Http\Controllers\GradosController;
 use App\Http\Controllers\MateriasController;
+use App\Http\Controllers\EstudiantesController;
+use App\Http\Controllers\ProfesoresController;
 use App\Http\Controllers\VistasController;
 use App\Http\Controllers\UsuariosController;
 
@@ -32,3 +34,17 @@ Route::get('/usuarios/delete/{id}',[UsuariosController::class,'delete'])->name('
 //MANEJO DE GRADOS
 
 Route::get('/grados',[GradosController::class,'index'])->name('grados.index');
+
+
+//MANEJO DE ESTUDIANTES
+
+Route::get('/estudiantes',[EstudiantesController::class,'index'])->name('estudiantes.index');
+Route::post('/estudiantes',[EstudiantesController::class,'update'])->name('estudiantes.update');
+Route::get('/estudiantes/{id}',[EstudiantesController::class,'delete'])->name('estudiantes.delete');
+
+
+//MANEJO DE PROFESORES
+
+Route::get('/profesores',[ProfesoresController::class,'index'])->name('profesores.index');
+Route::post('/profesores',[ProfesoresController::class,'update'])->name('profesores.update');
+Route::get('/profesores/{id}',[ProfesoresController::class,'delete'])->name('profesores.delete');

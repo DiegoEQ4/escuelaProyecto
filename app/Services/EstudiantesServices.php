@@ -15,7 +15,7 @@ class EstudiantesServices {
     
     function obtenerTodos()
     {   
-        $estudiantes = $this -> estudianteModel -> all();
+        $estudiantes = $this -> estudianteModel -> where('habilitado',1)->get();
         return $estudiantes;
     }
 
@@ -33,19 +33,22 @@ class EstudiantesServices {
         return $estudiante;
     }
 
-    function actualizarEstudiante(object $request,int $id)
+    function actualizarEstudiante(object $request)
     {
-        $usuario = $this->estudianteModel->findOrFail($request->idUsuario);
-
-        $usuario->save();
-        return $usuario;
+        $estudiante = $this->estudianteModel->findOrFail($request->carnet);
+        $estudiante -> nombre = $request -> nombre;
+        $estudiante -> apellido = $request -> apellido;
+        $estudiante -> correo = $request -> correo;
+        $estudiante -> fechaNacimiento = $request -> fechaNacimiento;
+        $estudiante->save();
+        return $estudiante;
     }
 
-    function deshabilitarUsuario(int $id)
+    function deshabilitarEstudiante(int $id)
     {
-        $usuario = $this->estudianteModel->findOrFail($id);
-        $usuario->habilitado = 0;   
-        $usuario->save();
+        $estudiante = $this->estudianteModel->findOrFail($id);
+        $estudiante->habilitado = 0;   
+        $estudiante->save();
         return 'hecho';
     }
 
