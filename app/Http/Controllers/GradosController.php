@@ -21,4 +21,16 @@ class GradosController extends Controller
         'response' => $response
         ]));
     }
+    function store(Request $request){
+        $response = $this->service-> crearGrado($request);
+        return back();
+    }
+    function update(Request $request){
+        $response = $this->service-> actualizarGrados($request);
+        return back();
+    }
+    function delete(int $id){
+        $response = $this->service-> deshabilitarGrados($id);
+        return back();
+    }
 }

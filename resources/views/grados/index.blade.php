@@ -18,7 +18,7 @@
     <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Nombre</th>
+      <th scope="col">Grado</th>
       <th scope="col">Seccion</th>
       <th scope="col">Cupos</th>
       <th scope="col">Año Lectivo</th>
@@ -29,29 +29,31 @@
     @foreach ($response as $grados)
         <tr>
             <th scope="row">{{ $numeral++ }}</th>
-            <td>{{$materia ->nombre}}</td>
-            <td>{{$materia ->descripcion}}</td>
-            <td>{{$materia ->duracion}} meses</td>
+            <td>{{$grados ->nombre}} </td>
+            <td>{{$grados ->seccion}}</td>
+            <td>{{$grados ->cupos}}</td>
+            <td>{{$grados ->tiempo}}</td>
             <td> 
-                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarModal-{{ $materia->idMateria }}">
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarModal-{{ $grados->idGrado }}">
                     <b> <i class="bi bi-pencil-fill text-white"></i></b>
                 </button>
-                <a type="button" class="btn btn-danger" href="{{ route('materias.delete',$materia->idMateria) }}">
+                <a type="button" class="btn btn-danger" href="{{ route('grados.delete',$grados->idGrado) }}">
                     <b> <i class="bi bi-trash3-fill"></i>
                 </a>
             </td>
         </tr>              
-        <x-materias.modal-editar 
-        :idMateria="$materia->idMateria" 
-        :nombre="$materia->nombre"
-        :descripcion="$materia->descripcion"
-        :duracion="$materia->duracion"
-        ></x-materias.modal-editar>
+        <x-grados.modal-editar 
+        :idGrado="$grados->idGrado" 
+        :nombre="$grados->nombre"
+        :seccion="$grados->seccion"
+        :cupos="$grados->cupos"
+        :orden="$grados->orden"
+        ></x-grados.modal-editar>
         
         @endforeach
     </tbody>
 </table>
-<x-materias.modal-crear></x-materias.modal-crear>
+<x-grados.modal-crear></x-grados.modal-crear>
 
 @endsection()
 

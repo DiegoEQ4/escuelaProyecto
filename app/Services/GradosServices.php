@@ -15,7 +15,7 @@ class GradosServices {
     
     function obtenerTodos()
     {   
-        $grados = $this -> gradosModel -> all();
+        $grados = $this -> gradosModel -> where('habilitado',1)->get();
         return $grados;
     }
 
@@ -26,26 +26,32 @@ class GradosServices {
         $grados -> nombre = $request -> nombre;
         $grados -> seccion = $request -> seccion;
         $grados -> cupos = (int)$request-> cupos;
+        $grados -> orden = (int)$request-> orden;
         $grados -> tiempo = (int)$request-> tiempo;
         $grados->save();
         return $grados;
     }
 
-    // function actualizarEstudiante(object $request,int $id)
-    // {
-    //     $usuario = $this->estudianteModel->findOrFail($request->idUsuario);
+    function actualizarGrados(object $request)
+    {
+        $grados = $this->gradosModel->findOrFail($request->idUsuario);
+        $grados -> nombre = $request -> nombre;
+        $grados -> seccion = $request -> seccion;
+        $grados -> cupos = (int)$request-> cupos;
+        $grados -> orden = (int)$request-> orden;
+        $grados -> tiempo = (int)$request-> tiempo;
 
-    //     $usuario->save();
-    //     return $usuario;
-    // }
+        $grados->save();
+        return $grados;
+    }
 
-    // function deshabilitarUsuario(int $id)
-    // {
-    //     $usuario = $this->estudianteModel->findOrFail($id);
-    //     $usuario->habilitado = 0;   
-    //     $usuario->save();
-    //     return 'hecho';
-    // }
+    function deshabilitarGrados(int $id)
+    {
+        $grados = $this->gradosModel->findOrFail($id);
+        $grados->habilitado = 0;   
+        $grados->save();
+        return 'hecho';
+    }
 
 
 

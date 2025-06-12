@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item mx-2">
-          <a class="nav-link" aria-current="page" href="{{ route('grados.index') }}">Grado</a>
+          <a class="nav-link" aria-current="page" href="{{ route('grados.index') }}">Grados</a>
         </li>
         <li class="nav-item mx-2">
           <a class="nav-link" href="{{ route('materias.index') }}">Materias</a>

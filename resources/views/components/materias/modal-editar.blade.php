@@ -6,7 +6,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="multiStepModalLabel">Paso 1: Informacion personal</h5>
+        <h5 class="modal-title" id="multiStepModalLabel">Informacion de la materia</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       <div class="modal-body">
@@ -18,7 +18,7 @@
               <div class="row">
                 <div class="row">
                   <div class="mb-3 col-12">
-                    <label class="form-label">Nombre de Materia</label>
+                    <label class="form-label">Nombre del grado</label>
                     <input type="text" class="form-control" name="nombre" value="{{ $nombre }}" required>
                   </div>
                 </div>
