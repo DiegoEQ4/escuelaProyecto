@@ -15,7 +15,7 @@ class ProfesoresServices {
     
     function obtenerTodos()
     {   
-        $profesores = $this -> profesorModel -> all();
+        $profesores = $this -> profesorModel -> where('habilitado',1)->get();
         return $profesores;
     }
 
@@ -37,10 +37,15 @@ class ProfesoresServices {
 
     function actualizarEstudiante(object $request,int $id)
     {
-        $usuario = $this->profesorModel->findOrFail($request->idUsuario);
-
-        $usuario->save();
-        return $usuario;
+        $profesor = $this->profesorModel->findOrFail($request->idUsuario);
+        $profesor -> nombre = $request -> nombre;
+        $profesor -> apellido = $request -> apellido;
+        $profesor -> correo = $request -> correo;
+        $profesor -> fechaNacimiento = $request -> fechaNacimiento;
+        $profesor->save();
+        return $profesor;
+        // $usuario->save();
+        // return $usuario;
     }
 
     function deshabilitarUsuario(int $id)
@@ -50,9 +55,6 @@ class ProfesoresServices {
         $usuario->save();
         return 'hecho';
     }
-
-
-
 }
 
 

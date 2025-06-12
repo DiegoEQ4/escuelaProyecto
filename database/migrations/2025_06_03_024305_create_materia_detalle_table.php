@@ -14,15 +14,20 @@ return new class extends Migration
         Schema::create('materia_detalle', function (Blueprint $table) {
             $table->id('idMateriaDetalle');
 
+            
+
             $table->foreignId('idGrado')
             ->references('idGrado')
-            ->on('grados');
+            ->on('grados')-> onDelete('cascade');
+
             $table->foreignId('idMateria')
             ->references('idMateria')
-            ->on('materias');
-            $table->foreignId('carnetProfesor')
-            ->references('carnet')
-            ->on('profesores');
+            ->on('materias')-> onDelete('cascade');
+
+            $table->integer('carnetProfesor');
+            
+            $table->foreign('carnetProfesor')->references('carnet')
+            ->on('profesores')->onDelete('cascade');
             
             $table->timestamps();
 

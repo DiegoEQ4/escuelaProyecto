@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->foreignId('nateria')
             ->references('idMateriaDetalle')
-            ->on('materia_detalle');
+            ->on('materia_detalle')-> onDelete('cascade');
             
             $table->timestamps();
             $table->integer('habilitado'); 

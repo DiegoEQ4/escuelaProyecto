@@ -21,12 +21,13 @@ return new class extends Migration
 
             $table->foreignId('idUsuario')
             ->references('idUsuario')
-            ->on('usuarios');
+            ->on('usuarios')-> onDelete('cascade');
 
             $table->foreignId('idGrado')
             ->nullable()
             ->references('idGrado')
-            ->on('grados');
+            ->on('grados')-> onDelete('cascade');
+            
             $table->integer('habilitado'); 
 
         });
