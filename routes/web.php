@@ -5,6 +5,7 @@ use App\Http\Controllers\ClasesController;
 use App\Http\Controllers\GradosController;
 use App\Http\Controllers\MateriasController;
 use App\Http\Controllers\EstudiantesController;
+use App\Http\Controllers\MateriaDetalleController;
 use App\Http\Controllers\ProfesoresController;
 use App\Http\Controllers\VistasController;
 use App\Http\Controllers\UsuariosController;
@@ -22,6 +23,9 @@ Route::post('/materias',[MateriasController::class,'store'])->name('materias.sto
 Route::post('/materias/update',[MateriasController::class,'update'])->name('materias.update');
 Route::get('/materias/delete/{id}',[MateriasController::class,'delete'])->name('materias.delete');
 
+
+//detalle
+Route::get('/materias/detalle',[MateriaDetalleController::class,'index'])->name('materia_detalle.index');
 
 //MANEJO DE USUARIOS 
 Route::get('/usuarios',[UsuariosController::class,'index'])->name('usuarios.index');
