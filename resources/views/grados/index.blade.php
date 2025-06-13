@@ -6,7 +6,7 @@
     $numeral = 1;
 @endphp
 
-<h2>Administración de materias</h2>
+<h2>Administración de grados</h2>
 
 <section class="text-end my-2">
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearModal">

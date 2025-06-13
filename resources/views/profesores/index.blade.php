@@ -33,6 +33,9 @@
                     <a type="button" class="btn btn-danger m-1" href="{{ route('profesores.delete',$profesor->carnet) }}">
                         <b> <i class="bi bi-trash3-fill"></i>   
                     </a>
+                    <a type="button" class="btn btn-primary m-1" href="{{ route('materia_detalle.index',$profesor->carnet) }}">
+                        <i class="bi bi-journal-plus"></i>
+                    </a>
                 </td>
             </tr>              
             {{-- <x-profesor.modal-editar 

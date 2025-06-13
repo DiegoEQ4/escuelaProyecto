@@ -25,7 +25,9 @@ Route::get('/materias/delete/{id}',[MateriasController::class,'delete'])->name('
 
 
 //detalle
-Route::get('/materias/detalle',[MateriaDetalleController::class,'index'])->name('materia_detalle.index');
+Route::get('/materias/detalle/{carnet}',[MateriaDetalleController::class,'index'])->name('materia_detalle.index');
+Route::post('/materias/detalle/',[MateriaDetalleController::class,'store'])->name('materia_detalle.store');
+Route::get('/materias/detalle//delete/{id}',[MateriaDetalleController::class,'delete'])->name('materia_detalle.delete');
 
 //MANEJO DE USUARIOS 
 Route::get('/usuarios',[UsuariosController::class,'index'])->name('usuarios.index');

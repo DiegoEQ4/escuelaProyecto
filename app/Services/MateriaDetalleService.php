@@ -7,15 +7,21 @@ use Illuminate\Support\Facades\Hash;
 class MateriaDetalleService {
 
     private $materiaDetalle;
-
+    private $gradoServices;
+    private $materiaService;
 
     public function __construct() {
         $this->materiaDetalle = new Materia_Detalle();
+        $this->gradoServices = new GradosServices;
+        $this->materiaService = new MateriasServices;
     }
     
-    function obtenerTodos()
+    function obtenerTodos(int $carnet)
     {   
-        $materias = $this -> materiaDetalle
+        $grado = $this-> gradoServices -> obtenerTodos();
+        $materia = $this-> materiaService -> obtenerTodos();
+
+        $detalle = $this -> materiaDetalle
         ->from('materia_detalle as md') 
         ->join('profesores as p', 'md.carnetProfesor', '=', 'p.carnet')
         ->join('materias as m', 'md.idMateria', '=', 'm.idMateria')
@@ -24,24 +30,30 @@ class MateriaDetalleService {
             'md.idMateriaDetalle',
             'm.nombre as nombre_materia',
             'p.nombre as nombre_profesor',
-            'g.nombre as nombre_grado'
+            'p.apellido as apellido_profesor',
+            'g.nombre as nombre_grado',
+            'g.seccion as seccion_grado'
         )
+        ->where('md.carnetProfesor',$carnet)
+        ->where('md.habilitado',1)
         ->get();
-        return $materias;
+        return [
+            "detalle" => $detalle,
+            "grado" => $grado,
+            "materia" => $materia
+        ];
     }
 
 
-    // function crearGrado($request)
-    // {
-    //     $grados = new Grados();
-    //     $grados -> nombre = $request -> nombre;
-    //     $grados -> seccion = $request -> seccion;
-    //     $grados -> cupos = (int)$request-> cupos;
-    //     $grados -> orden = (int)$request-> orden;
-    //     $grados -> tiempo = (int)$request-> tiempo;
-    //     $grados->save();
-    //     return $grados;
-    // }
+    function asignarGrado($request)
+    {
+        $detalle = new Materia_Detalle();
+        $detalle -> idGrado = $request -> idGrado;
+        $detalle -> idMateria = $request -> idMateria;
+        $detalle -> carnetProfesor = $request -> carnetProfesor;
+        $detalle->save();
+        return $detalle;
+    }
 
     // function actualizarGrados(object $request)
     // {
@@ -56,13 +68,13 @@ class MateriaDetalleService {
     //     return $grados;
     // }
 
-    // function deshabilitarGrados(int $id)
-    // {
-    //     $grados = $this->gradosModel->findOrFail($id);
-    //     $grados->habilitado = 0;   
-    //     $grados->save();
-    //     return 'hecho';
-    // }
+    function deshabilitarDetalle(int $id)
+    {
+        $detalle = $this->materiaDetalle->findOrFail($id);
+        $detalle->habilitado = 0;   
+        $detalle->save();
+        return 'hecho';
+    }
 
 
 

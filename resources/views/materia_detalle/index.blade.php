@@ -6,7 +6,7 @@
     $numeral = 1;
 @endphp
 
-<h2>Administración de materias</h2>
+<h2>Administración de materias asignadas para el profesor</h2>
 
 <section class="text-end my-2">
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearModal">
@@ -19,25 +19,23 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Materia</th>
-      <th scope="col">Profesor</th>
       <th scope="col">Grado</th>
       <th scope="col">Acciones</th>
     </tr>
   </thead>
     <tbody class="table-group-divider">
-    @foreach ($response as $detalle)
+    @foreach ($response["detalle"] as $detalle)
         <tr>
             <th scope="row">{{ $numeral++ }}</th>
             <td>{{$detalle ->nombre_materia}}</td>
-            <td>{{$detalle ->nombre_profesor}}</td>
-            <td>{{$detalle ->nombre_grado}}</td>
+            <td>{{$detalle ->nombre_grado}} - {{$detalle ->seccion_grado}}</td>
             <td> 
                 {{-- <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarModal-{{ $materia->idMateria }}">
                     <b> <i class="bi bi-pencil-fill text-white"></i></b>
-                </button>
-                <a type="button" class="btn btn-danger" href="{{ route('materias.delete',$materia->idMateria) }}">
+                </button> --}}
+                <a type="button" class="btn btn-danger" href="{{ route('materia_detalle.delete',$detalle->idMateriaDetalle) }}">
                     <b> <i class="bi bi-trash3-fill"></i>
-                </a> --}}
+                </a>
             </td>
         </tr>              
         {{-- <x-materias.modal-editar 
@@ -50,7 +48,10 @@
         @endforeach
     </tbody>
 </table>
-{{-- <x-materias.modal-crear></x-materias.modal-crear> --}}
-
+<x-materia_detalle.crear-modal
+    :grados="$response['grado']"
+    :materias="$response['materia']"
+    :profesor="request()->route('carnet')"
+></x-materia_detalle.crear-modal>
 @endsection()
 
