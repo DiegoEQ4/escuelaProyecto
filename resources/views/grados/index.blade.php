@@ -6,15 +6,15 @@
     $numeral = 1;
 @endphp
 
-<h2>Administración de grados</h2>
+<h2 style="font-weight: bold;">Administración de grados</h2>
 
 <section class="text-end my-2">
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearModal">
-         <b> <i class="bi bi-plus-circle"></i> Agregar </b>
+        <i class="bi bi-plus-circle"></i> Agregar
     </button>
 </section>
 
-<table class="table table-secondary table-borderless rounded shadow border border-dark-subtle">
+<table class="table table-light table-borderless rounded shadow border border-dark-subtle">
     <thead>
     <tr>
       <th scope="col">#</th>

@@ -26,6 +26,25 @@
           </ul>
         </li>
       </ul>
+       <div class="d-flex nav-item mx-2">
+          <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                  @auth
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                            {{ Auth::user()->nombreUsuario }} 
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li>
+                              <form action="{{route('login.logout')}}" method="POST">
+                                  @csrf
+                                  <button class="btn" type="submit">Cerrar sesión</button>
+                              </form>
+                          </li>
+                      </ul>
+                  @endauth
+              </li>
+          </ul>
+      </div>
     </div>
   </div>
 </nav>

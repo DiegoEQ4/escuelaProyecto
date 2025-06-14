@@ -25,6 +25,7 @@ Route::post('/login/auth', [AuthController::class, 'auth'])->name('login.auth');
 
 
 Route::middleware(['auth'])->group(function () {
+    Route::post('/login/auth/logout', [AuthController::class, 'logout'])->name('login.logout');
     Route::get('/index',[VistasController::class,'index'])->name('dashboard');
     //MANEJO DDE MATERIAS 
     Route::get('/materias',[MateriasController::class,'index'])->name('materias.index');

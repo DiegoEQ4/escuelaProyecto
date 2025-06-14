@@ -19,6 +19,12 @@ class AuthServices
 
             if (Auth::attempt($credenciales, false)) {
                 $request->session()->regenerate();
+                $usuario = Auth::user();
+                session([
+                    'tipo'=>$usuario->tipo,
+                    'nombreUsuario'=>$usuario->nombreUsuario,
+                    'idUsuario'=>$usuario->idUsuario
+                ]);
 
                 return redirect()->route('dashboard');
             } else {
@@ -28,6 +34,21 @@ class AuthServices
         } catch (\Throwable $th) {
 
             return back()->with('error', 'Crendenciales incorrectas');
+        }
+    }
+
+
+    function logout(Request $request){
+        try {
+            
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            return redirect()->route('login');
+
+        } catch (\Throwable $th) {
+            echo var_dump($th);
         }
     }
 }

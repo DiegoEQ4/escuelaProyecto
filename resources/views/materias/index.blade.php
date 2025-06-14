@@ -14,7 +14,7 @@
     </button>
 </section>
 
-<table class="table table-secondary table-borderless rounded shadow border border-dark-subtle">
+<table class="table table-light table-borderless rounded shadow border border-dark-subtle">
     <thead>
     <tr>
       <th scope="col">#</th>
