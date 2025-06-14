@@ -5,6 +5,7 @@ use App\Http\Controllers\ClasesController;
 use App\Http\Controllers\GradosController;
 use App\Http\Controllers\MateriasController;
 use App\Http\Controllers\EstudiantesController;
+use App\Http\Controllers\EstudiantesGradoController;
 use App\Http\Controllers\MateriaDetalleController;
 use App\Http\Controllers\ProfesoresController;
 use App\Http\Controllers\VistasController;
@@ -44,6 +45,10 @@ Route::post('/grados/update',[GradosController::class,'update'])->name('grados.u
 Route::get('/grados/{id}',[GradosController::class,'delete'])->name('grados.delete');
 
 
+//GRADOS ESTUDIANTES
+Route::get('/grados/estudiante/{id}',[EstudiantesGradoController::class,'index'])->name('estudiante_grado.index');
+Route::post('/grados/estudiante/add/{id}',[EstudiantesGradoController::class,'store'])->name('estudiante_grado.store');
+Route::get('/grados/estudiante/delete/{id}',[EstudiantesGradoController::class,'delete'])->name('estudiante_grado.delete');
 
 //MANEJO DE ESTUDIANTES
 

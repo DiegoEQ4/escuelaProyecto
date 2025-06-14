@@ -38,7 +38,10 @@
                     <b> <i class="bi bi-pencil-fill text-white"></i></b>
                 </button>
                 <a type="button" class="btn btn-danger" href="{{ route('grados.delete',$grados->idGrado) }}">
-                    <b> <i class="bi bi-trash3-fill"></i>
+                    <i class="bi bi-trash3-fill"></i>
+                </a>
+                <a type="button" class="btn btn-primary" href="{{ route('estudiante_grado.index',$grados->idGrado) }}">
+                    <i class="bi bi-person-fill-add"></i>
                 </a>
             </td>
         </tr>              

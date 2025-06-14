@@ -52,6 +52,24 @@ class EstudiantesServices {
         return 'hecho';
     }
 
+    function obtenerEstudiantePorGrado(int $idGrado ){
+        $estudiantes = $this -> estudianteModel -> where('idGrado',$idGrado)-> where('habilitado',1)->get();
+        return $estudiantes;
+    }
+
+    function asignacionGrado($request){
+        $estudiante = $this->estudianteModel->findOrFail($request->carnet);
+        $estudiante -> idGrado = $request -> idGrado;
+        $estudiante->save();
+        return $estudiante;
+    }
+
+    function desvnicularGrado(int $carnet){
+        $estudiante = $this->estudianteModel->findOrFail($carnet);
+        $estudiante -> idGrado = null;
+        $estudiante->save();
+        return $estudiante;
+    }
 
 
 }
