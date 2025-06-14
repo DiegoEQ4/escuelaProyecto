@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthServices
 {
+
+    private $service;
+
+    public function __construct(ProfesoresServices $profesoresServices) {
+        $this->service = $profesoresServices;
+    }
+
     function login(Request $request)
     {
         try {
@@ -18,17 +25,22 @@ class AuthServices
             ];
 
             if (Auth::attempt($credenciales, false)) {
-                $request->session()->regenerate();
-                $usuario = Auth::user();
-                session([
-                    'tipo'=>$usuario->tipo,
-                    'nombreUsuario'=>$usuario->nombreUsuario,
-                    'idUsuario'=>$usuario->idUsuario
-                ]);
-
-                return redirect()->route('dashboard');
-            } else {
-
+                    $request->session()->regenerate();
+                    $usuario = Auth::user();
+                    if($usuario -> habilitado == 1){
+                        session([
+                            'tipo'=>$usuario->tipo,
+                            'nombreUsuario'=>$usuario->nombreUsuario,
+                            'idUsuario'=>$usuario->idUsuario,
+                            'carnet' => $this->service->obtenerCarnetPorId($usuario->idUsuario),
+                    ]);
+                    
+                    return redirect()->route('dashboard');
+                } else {
+                    return back()->with('error', 'Usuario no autorizado');
+                    
+                }
+            }else{
                 return back()->with('error', 'Crendenciales incorrectas');
             }
         } catch (\Throwable $th) {

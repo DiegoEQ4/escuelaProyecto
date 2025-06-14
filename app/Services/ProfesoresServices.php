@@ -57,7 +57,8 @@ class ProfesoresServices {
     }
 
     function obtenerCarnetPorId(int $id){
-        
+        $profesor = $this -> profesorModel -> where('idUsuario',$id)->first();
+        return $profesor ? $profesor->carnet : 1;
     }
 }
 
