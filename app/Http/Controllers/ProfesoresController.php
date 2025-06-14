@@ -25,9 +25,9 @@ class ProfesoresController extends Controller
         $response = $this->service-> actualizarEstudiante($request);
         return back();
     }
-    // function delete(int $id){
+    function delete(int $id){
 
-    //     $response = $this->service-> deshabilitarUsuario($id);
-    //     return back();
-    // }
+        $response = $this->service-> deshabilitarUsuario($id);
+        return back();
+    }
 }

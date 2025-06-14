@@ -55,6 +55,10 @@ class ProfesoresServices {
         $usuario->save();
         return 'hecho';
     }
+
+    function obtenerCarnetPorId(int $id){
+        
+    }
 }
 
 
