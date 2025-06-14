@@ -10,7 +10,7 @@ class VistasController extends Controller
     function index(){
         return view('welcome');
     }
-    function materiaView(){
-        return view('materias.index');
+    function loginReturn(){
+        return redirect()->route('login');
     }
 }

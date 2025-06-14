@@ -20,8 +20,8 @@
       @csrf
       
       <div class="mb-3">
-        <label for="email" class="form-label">Correo electrónico</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="tucorreo@correo.com" required>
+        <label for="username" class="form-label">Nombre de usuario</label>
+        <input type="text" class="form-control" id="email" name="username" placeholder="tu.usuario" required>
       </div>
 
       <div class="mb-3">
@@ -33,9 +33,9 @@
         <button type="submit" class="btn btn-primary">Ingresar</button>
       </div>
 
-      <div class="text-center mt-3">
+      {{-- <div class="text-center mt-3">
         <a href="#">¿Olvidaste tu contraseña?</a>
-      </div>
+      </div> --}}
     </form>
   </div>
 </div>

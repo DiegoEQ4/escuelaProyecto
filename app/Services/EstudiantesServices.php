@@ -19,6 +19,11 @@ class EstudiantesServices {
         return $estudiantes;
     }
 
+    function obtenerEstudiantesSinGrados()
+    {   
+        $estudiantes = $this -> estudianteModel -> where('habilitado',1)->where('idGrado',null)->get();
+        return $estudiantes;
+    }
 
     function crearEstudiante($request)
     {

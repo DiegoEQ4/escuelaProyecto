@@ -16,7 +16,7 @@ class EstudiantesGradoController extends Controller
 
     function index(int $idGrado){
         $response = $this ->service -> obtenerEstudiantePorGrado($idGrado);
-        $estudiantes = $this ->service -> obtenerTodos();
+        $estudiantes = $this ->service -> obtenerEstudiantesSinGrados();
         return(view('estudiantes_grados.index',[
             "response"=> $response,
             "estudiantes" => $estudiantes

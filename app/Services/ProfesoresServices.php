@@ -35,7 +35,7 @@ class ProfesoresServices {
         return $profesor;
     }
 
-    function actualizarEstudiante(object $request,int $id)
+    function actualizarEstudiante(object $request)
     {
         $profesor = $this->profesorModel->findOrFail($request->idUsuario);
         $profesor -> nombre = $request -> nombre;

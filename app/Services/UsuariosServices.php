@@ -29,7 +29,7 @@ class UsuariosServices {
     {
         $usuario = new Usuarios();
         $usuario->nombreUsuario = $request->nombreUsuario;
-        $usuario->contrasena = $request->contrasena;
+        $usuario->contrasena = bcrypt($request->contrasena);
         $usuario->tipo = (int)$request->tipo;
         $usuario->save();
         
