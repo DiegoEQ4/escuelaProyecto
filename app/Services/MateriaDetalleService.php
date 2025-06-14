@@ -28,9 +28,12 @@ class MateriaDetalleService {
         ->join('grados as g', 'md.idGrado', '=', 'g.idGrado')
         ->select(
             'md.idMateriaDetalle',
+            'm.idMateria',
             'm.nombre as nombre_materia',
+            'p.carnet',
             'p.nombre as nombre_profesor',
             'p.apellido as apellido_profesor',
+            'g.idGrado',
             'g.nombre as nombre_grado',
             'g.seccion as seccion_grado'
         )
@@ -55,18 +58,16 @@ class MateriaDetalleService {
         return $detalle;
     }
 
-    // function actualizarGrados(object $request)
-    // {
-    //     $grados = $this->gradosModel->findOrFail($request->idUsuario);
-    //     $grados -> nombre = $request -> nombre;
-    //     $grados -> seccion = $request -> seccion;
-    //     $grados -> cupos = (int)$request-> cupos;
-    //     $grados -> orden = (int)$request-> orden;
-    //     $grados -> tiempo = (int)$request-> tiempo;
+    function actualizarDetalle(object $request)
+    {
+        $detalle = $this->materiaDetalle->findOrFail($request->idDetalleMateria);
+        $detalle -> idGrado = $request -> idGrado;
+        $detalle -> idMateria = $request -> idMateria;
+        $detalle -> carnetProfesor = $request -> carnetProfesor;
 
-    //     $grados->save();
-    //     return $grados;
-    // }
+        $detalle->save();
+        return $detalle;
+    }
 
     function deshabilitarDetalle(int $id)
     {

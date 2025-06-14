@@ -24,8 +24,12 @@ class MateriaDetalleController extends Controller
         $response = $this->service-> asignarGrado($request);
         return back();
     }
-    function delete(int $id){
-        $response = $this->service-> deshabilitarDetalle($id);
+    function udpate(Request $request){
+        $response = $this->service-> actualizarDetalle($request);
         return back();
     }
+    function delete(int $id){
+        $response = $this->service-> deshabilitarDetalle($id);
+            return back();
+        }
 }

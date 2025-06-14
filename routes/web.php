@@ -1,6 +1,8 @@
 <?php
 
 //CONTROLADORES
+
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClasesController;
 use App\Http\Controllers\GradosController;
 use App\Http\Controllers\MateriasController;
@@ -15,8 +17,11 @@ use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/',[VistasController::class,'index']);
+Route::get('/index',[VistasController::class,'index'])->name('index');
 
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login.view');
+Route::post('/login/auth', [AuthController::class, 'auth'])->name('login.auth');
 
 //MANEJO DDE MATERIAS 
 Route::get('/materias',[MateriasController::class,'index'])->name('materias.index');
@@ -25,9 +30,10 @@ Route::post('/materias/update',[MateriasController::class,'update'])->name('mate
 Route::get('/materias/delete/{id}',[MateriasController::class,'delete'])->name('materias.delete');
 
 
-//detalle
+//DETALLE MATERIAS
 Route::get('/materias/detalle/{carnet}',[MateriaDetalleController::class,'index'])->name('materia_detalle.index');
 Route::post('/materias/detalle/',[MateriaDetalleController::class,'store'])->name('materia_detalle.store');
+Route::post('/materias/detalle/update',[MateriaDetalleController::class,'udpate'])->name('materia_detalle.update');
 Route::get('/materias/detalle//delete/{id}',[MateriaDetalleController::class,'delete'])->name('materia_detalle.delete');
 
 //MANEJO DE USUARIOS 
