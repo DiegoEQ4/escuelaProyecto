@@ -24,7 +24,8 @@
     </tr>
   </thead>
     <tbody class="table-group-divider">
-    @foreach ($response["detalle"] as $detalle)
+    @foreach ($response["datos"] as $dato)
+    @php $detalle = $dato['detalle']; @endphp
         <tr>
             <th scope="row">{{ $numeral++ }}</th>
             <td>{{$detalle ->nombre_materia}}</td>
@@ -52,7 +53,9 @@
         ></x-materia_detalle.editar-modal>
         <x-clases.modal-crear
             :idDetalleMateria="$detalle->idMateriaDetalle"
+            :clase="$detalle->idMateriaDetalle"
             :materia="$detalle->nombre_materia"
+            :clases="$dato['clases']"
             
         ></x-clases.modal-crear>
         

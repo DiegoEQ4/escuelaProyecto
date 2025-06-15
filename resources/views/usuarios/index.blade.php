@@ -9,6 +9,10 @@
 
 <h2>Administración de usuarios</h2>
 
+@if(session('error'))
+    {{ session('error') }}
+@endif
+
 
 <section class="text-end my-2">
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearModal">
@@ -26,6 +30,7 @@
       <th scope="col">Acciones</th>
     </tr>
   </thead>
+  
     <tbody class="table-group-divider">
     @foreach ($response as $usuario)
         <tr>

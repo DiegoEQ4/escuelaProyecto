@@ -9,18 +9,20 @@ class MateriaDetalleService {
     private $materiaDetalle;
     private $gradoServices;
     private $materiaService;
+    private $claseService;
 
     public function __construct() {
         $this->materiaDetalle = new Materia_Detalle();
         $this->gradoServices = new GradosServices;
         $this->materiaService = new MateriasServices;
+        $this->claseService = new ClasesServices;
     }
     
     function obtenerTodos(int $carnet)
     {   
         $grado = $this-> gradoServices -> obtenerTodos();
         $materia = $this-> materiaService -> obtenerTodos();
-
+        
         $detalle = $this -> materiaDetalle
         ->from('materia_detalle as md') 
         ->join('profesores as p', 'md.carnetProfesor', '=', 'p.carnet')
@@ -40,10 +42,17 @@ class MateriaDetalleService {
         ->where('md.carnetProfesor',$carnet)
         ->where('md.habilitado',1)
         ->get();
+        $datos = $detalle->map(function ($item) {
+        $clases = $this->claseService->obtenerPorDetlle($item->idMateriaDetalle);
         return [
-            "detalle" => $detalle,
+            'detalle' => $item,
+            'clases' => $clases
+        ];
+    });
+        return [
+            "datos" => $datos,
             "grado" => $grado,
-            "materia" => $materia
+            "materia" => $materia,
         ];
     }
 

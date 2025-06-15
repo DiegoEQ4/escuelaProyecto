@@ -14,7 +14,12 @@ class ClasesController extends Controller
         $this->service = $clasesService;
     }
 
-    public function index () {
-
+    public function store (Request $request) {
+        $this->service->crearClase($request);
+        return back();
+    }
+    public function delete (int $id) {
+        $this->service->deshabilitarClases($id);
+        return back();
     }
 }

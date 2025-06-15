@@ -1,4 +1,4 @@
-@props(["idDetalleMateria", "materia"])
+@props(["idDetalleMateria", "materia","clases"])
 <div class="modal fade" id="modalClase-{{ $idDetalleMateria }}" tabindex="-1" aria-labelledby="multiStepModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -10,18 +10,18 @@
 
       <div class="modal-body">
         <!-- Paso 1 -->
-        <form id="nuevaClase" action="#" method="POST">
+        <form id="nuevaClase" action="{{ route('clases.store') }}" method="POST">
           @csrf
 
           <div id="step1">
             <section id="forms-controls">
               <div class="row">
                 <div class="mb-3 col-12">
-                  <label class="form-label">Tema o contenido <b style="color:red;">*</b></label>
+                  <label class="form-label">Tema o contenido <b class="text-danger">*</b></label>
                   <input type="text" class="form-control" name="contenido" required>
                 </div>
                 <div class="mb-3 col-12">
-                  <label class="form-label">Duracion (semanas) <b style="color:red;">*</b></label>
+                  <label class="form-label">Duracion (horas) <b class="text-danger">*</b></label>
                   <input type="number" class="form-control" name="duracion" required>
                   <input type="hidden" class="form-control" name="detalle_materia" value="{{ $idDetalleMateria }}">
                 </div>
@@ -52,22 +52,25 @@
         </div>
 
         <!-- REGISTROS DE LA TABLA -->
-        <div class="row border-bottom py-2">
-            <div class="col-7 d-flex align-items-center">
-                Integrales triples con coordenadas polares
-            </div>
-            <div class="col-3 d-flex align-items-center">
-                5 semanas
-            </div>
-            <div class="col-2">
-                <a type="button" class="btn btn-danger" href="#">
-                    <b> <i class="bi bi-trash3-fill"></i>
-                </a>
-            </div>
-        </div>
-
+        @foreach ( $clases as $clase )          
+          <div class="row border-bottom py-2">
+              <div class="col-7 d-flex align-items-center">
+                {{ $clase -> contenidoClase }}
+              </div>
+              <div class="col-3 d-flex align-items-center">
+                {{ $clase -> duracion }}
+              </div>
+              <div class="col-2">
+                  <a type="button" class="btn btn-danger" href="{{ route('clases.delete',$clase->idClase) }}">
+                      <b> <i class="bi bi-trash3-fill"></i></b>
+                  </a>
+              </div>
+          </div>
+        @endforeach
       </div>
-
+      <div class="d-flex justify-content-center">
+          {{ $clases->links() }}
+      </div>
     </div>
   </div>
 </div>

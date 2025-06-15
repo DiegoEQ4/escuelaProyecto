@@ -9,7 +9,7 @@ class Clases extends Model
     //
     public $incrementing = true;
     protected $table = 'clases'; 
-    protected $primaryKey = 'idClases'; 
+    protected $primaryKey = 'idClase'; 
     protected $fillable = [
         'contenidoClase',
         'duracion',

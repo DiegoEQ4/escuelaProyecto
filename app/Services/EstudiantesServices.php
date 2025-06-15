@@ -27,15 +27,22 @@ class EstudiantesServices {
 
     function crearEstudiante($request)
     {
-        $estudiante = new Estudiantes();
-        $estudiante -> carnet = $request["carnet"];
-        $estudiante -> nombre = $request["nombre"];
-        $estudiante -> apellido = $request["apellido"];
-        $estudiante -> correo = $request["correo"];
-        $estudiante -> fechaNacimiento = $request["fechaNacimiento"];
-        $estudiante -> idUsuario = $request["idUsuario"];
-        $estudiante->save();
-        return $estudiante;
+        try {
+            $estudiante = new Estudiantes();
+            $estudiante -> carnet = $request["carnet"];
+            $estudiante -> nombre = $request["nombre"];
+            $estudiante -> apellido = $request["apellido"];
+            $estudiante -> correo = $request["correo"];
+            $estudiante -> fechaNacimiento = $request["fechaNacimiento"];
+            $estudiante -> idUsuario = $request["idUsuario"];
+            $estudiante->save();
+            session()->flash('success', 'Registro guardado correctamente');
+            return $estudiante;
+        } catch (\Throwable $th) {
+            session()->flash('error', 'Error inesperado: ' . $th->getMessage());
+            return redirect()->back();
+        }
+
     }
 
     function actualizarEstudiante(object $request)

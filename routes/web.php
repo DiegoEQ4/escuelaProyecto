@@ -75,4 +75,6 @@ Route::middleware(['auth'])->group(function () {
 
     //MANEJO DE CLASES  
     Route::get('/clases',[ClasesController::class,'index'])->name('clases.index');
+    Route::post('/clases/store',[ClasesController::class,'store'])->name('clases.store');
+    Route::get('/clases/delete/{id}',[ClasesController::class,'delete'])->name('clases.delete');
 });
