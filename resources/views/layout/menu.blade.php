@@ -23,9 +23,11 @@
         <li class="nav-item mx-2 {{ session('tipo') != 2 ? 'd-none' : '' }}">
           <a class="nav-link" href="{{ route('materia_detalle.index', session('carnet') ?? 0) }}">Materias impartidas</a>
         </li>
+        <!-- 
         <li class="nav-item mx-2">
           <a class="nav-link" href="#">Clases</a>
-        </li>
+        </li> 
+        -->
         <li class="nav-item mx-2 dropdown {{ session('tipo') != 3 ? 'd-none' : '' }}">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Usuarios

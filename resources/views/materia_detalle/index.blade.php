@@ -36,6 +36,9 @@
                 <a type="button" class="btn btn-danger" href="{{ route('materia_detalle.delete',$detalle->idMateriaDetalle) }}">
                     <b> <i class="bi bi-trash3-fill"></i>
                 </a>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalClase-{{ $detalle->idMateriaDetalle }}">
+                    <b><i class="bi bi-clipboard-fill"></i></b>
+                </button>
             </td>
         </tr>              
         <x-materia_detalle.editar-modal 
@@ -47,6 +50,11 @@
             :carnet="$detalle->carnet"
             :idGrado="$detalle->idGrado"
         ></x-materia_detalle.editar-modal>
+        <x-clases.modal-crear
+            :idDetalleMateria="$detalle->idMateriaDetalle"
+            :materia="$detalle->nombre_materia"
+            
+        ></x-clases.modal-crear>
         
         @endforeach
     </tbody>
@@ -56,5 +64,7 @@
     :materias="$response['materia']"
     :profesor="request()->route('carnet')"
 ></x-materia_detalle.crear-modal>
+
+
 @endsection()
 
