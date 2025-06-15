@@ -21,12 +21,12 @@
       
       <div class="mb-3">
         <label for="username" class="form-label">Nombre de usuario</label>
-        <input type="text" class="form-control" id="email" name="username" placeholder="tu.usuario" autocomplete="off" required>
+        <input type="text" class="form-control" id="email" name="username" placeholder="Ingresa tu usuario" autocomplete="off" required>
       </div>
 
       <div class="mb-3">
         <label for="password" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu contraseña..." required>
       </div>
 
       <div class="d-grid">

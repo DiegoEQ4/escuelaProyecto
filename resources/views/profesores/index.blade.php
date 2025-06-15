@@ -38,18 +38,18 @@
                     </a>
                 </td>
             </tr>              
-            {{-- <x-profesor.modal-editar 
+            <x-profesores.modal-editar 
             :carnet="$profesor->carnet"
             :nombre="$profesor->nombre"
             :apellido="$profesor->apellido"
             :correo="$profesor->correo"
             :nacimiento="$profesor->fechaNacimiento"
-            ></x-profesor.modal-editar>          --}}
+            :telefono="$profesor->telefono"
+            :titulo="$profesor->titulo"
+            ></x-profesores.modal-editar>         
             @endforeach
         </tbody>
     </table>
 </div>
-{{-- <x-usuarios.modal-crear></x-usuarios.modal-crear> --}}
-{{-- <x-estudiantes.modal-crear></x-usuarios.modal-crear> --}}
 @endsection()
 

@@ -70,7 +70,7 @@ Route::middleware(['auth'])->group(function () {
     //MANEJO DE PROFESORES
 
     Route::get('/profesores',[ProfesoresController::class,'index'])->name('profesores.index');
-    Route::post('/profesores',[ProfesoresController::class,'update'])->name('profesores.update');
+    Route::post('/profesores/update',[ProfesoresController::class,'update'])->name('profesores.update');
     Route::get('/profesores/{id}',[ProfesoresController::class,'delete'])->name('profesores.delete');
 
     //MANEJO DE CLASES  
