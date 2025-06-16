@@ -2,6 +2,7 @@
 
 //CONTROLADORES
 
+use App\Http\Controllers\AsistenciasController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClasesController;
 use App\Http\Controllers\GradosController;
@@ -27,6 +28,12 @@ Route::post('/login/auth', [AuthController::class, 'auth'])->name('login.auth');
 Route::middleware(['auth'])->group(function () {
     Route::post('/login/auth/logout', [AuthController::class, 'logout'])->name('login.logout');
     Route::get('/index',[VistasController::class,'index'])->name('dashboard');
+
+    //ASISTENCIAS 
+    Route::get('/asistencias',[AsistenciasController::class,'index'])->name('asistencias.index');
+
+
+
     //MANEJO DDE MATERIAS 
     Route::get('/materias',[MateriasController::class,'index'])->name('materias.index');
     Route::post('/materias',[MateriasController::class,'store'])->name('materias.store');
