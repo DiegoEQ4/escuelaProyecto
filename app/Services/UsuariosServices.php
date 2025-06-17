@@ -27,38 +27,56 @@ class UsuariosServices {
 
     function crearUsuario(object $request)
     {
-        $usuario = new Usuarios();
-        $usuario->nombreUsuario = $request->nombreUsuario;
-        $usuario->contrasena = $request->contrasena;
-        $usuario->tipo = (int)$request->tipo;
-        $usuario->save();
-        
-        $idUsuario = $usuario -> idUsuario;
-        
-        if($usuario -> tipo == 1){
-            $estudiante = [
-                "carnet"=> $request -> carnet,
-                "nombre"=> $request -> nombre,
-                "apellido"=> $request -> apellido,
-                "correo"=> $request -> correo,
-                "fechaNacimiento"=> $request -> fechaNacimiento,
-                "idUsuario"=>  $idUsuario ,
-            ];
-            $this -> estudianteServices -> crearEstudiante($estudiante);
-            return $estudiante;
-        }else if($usuario -> tipo == 2){
-            $profesor = [
-                "carnet"=> $request -> carnet,
-                "nombre"=> $request -> nombre,
-                "apellido"=> $request -> apellido,
-                "correo"=> $request -> correo,
-                "titulo"=> $request -> titulo,
-                "telefono"=> $request -> telefono,
-                "fechaNacimiento"=> $request -> fechaNacimiento,
-                "idUsuario"=>  $idUsuario ,
-            ];
-            $this -> profesorServices -> crearProfesor($profesor);
-            return $profesor;
+        try {
+            $usuario = new Usuarios();
+            $usuario->nombreUsuario = $request->nombreUsuario;
+            $usuario->contrasena = bcrypt($request->contrasena);
+            $usuario->tipo = (int)$request->tipo;
+            $usuario->save();
+            
+            $idUsuario = $usuario -> idUsuario;
+            
+            if($usuario -> tipo == 1){
+                $estudiante = [
+                    "carnet"=> $request -> carnet,
+                    "nombre"=> $request -> nombre,
+                    "apellido"=> $request -> apellido,
+                    "correo"=> $request -> correo,
+                    "fechaNacimiento"=> $request -> fechaNacimiento,
+                    "idUsuario"=>  $idUsuario ,
+                ];
+                $this -> estudianteServices -> crearEstudiante($estudiante);
+                return $estudiante;
+            }else if($usuario -> tipo == 2){
+                $profesor = [
+                    "carnet"=> $request -> carnet,
+                    "nombre"=> $request -> nombre,
+                    "apellido"=> $request -> apellido,
+                    "correo"=> $request -> correo,
+                    "titulo"=> $request -> titulo,
+                    "telefono"=> $request -> telefono,
+                    "fechaNacimiento"=> $request -> fechaNacimiento,
+                    "idUsuario"=>  $idUsuario ,
+                ];
+                $this -> profesorServices -> crearProfesor($profesor);
+                return $profesor;
+            }else{
+                $profesor = [
+                    "carnet"=> $request -> carnet,
+                    "nombre"=> $request -> nombre,
+                    "apellido"=> $request -> apellido,
+                    "correo"=> $request -> correo,
+                    "titulo"=> $request -> titulo,
+                    "telefono"=> $request -> telefono,
+                    "fechaNacimiento"=> $request -> fechaNacimiento,
+                    "idUsuario"=>  $idUsuario ,
+                ];
+                $this -> profesorServices -> crearProfesor($profesor);
+                return $profesor;
+            }
+        } catch (\Throwable $th) {
+            session ()->flash('error', 'Error inesperado: ' . $th->getMessage());
+            return redirect()->back();
         }
     }
 
@@ -66,7 +84,7 @@ class UsuariosServices {
     {
         $usuario = $this->usuarioModel->findOrFail($request->idUsuario);
         $usuario->nombreUsuario = $request->nombreUsuario;      
-        $usuario->contrasena = $request->contrasena;
+        $usuario->contrasena = bcrypt($request->contrasena);
         $usuario->tipo = (int)$request->tipo;
         $usuario->save();
         return $usuario;
@@ -81,6 +99,5 @@ class UsuariosServices {
     }
 
 }
-
 
 ?>

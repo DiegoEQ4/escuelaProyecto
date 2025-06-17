@@ -13,7 +13,7 @@
         <form id="formMultiPaso" action="{{ route('usuarios.store') }}" method="POST">
           @csrf
 
-          <div id="step1">
+          <div id="step1">  
             <section id="forms-controls">
               <div class="row">
                 <div class="row">

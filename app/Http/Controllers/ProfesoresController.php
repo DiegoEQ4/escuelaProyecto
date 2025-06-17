@@ -22,12 +22,12 @@ class ProfesoresController extends Controller
     }
     function update(Request $request){
 
-        $response = $this->service-> actualizarEstudiante($request);
+        $response = $this->service-> actualizarProfesor($request);
         return back();
     }
-    // function delete(int $id){
+    function delete(int $id){
 
-    //     $response = $this->service-> deshabilitarUsuario($id);
-    //     return back();
-    // }
+        $response = $this->service-> deshabilitarProfesor($id);
+        return back();
+    }
 }

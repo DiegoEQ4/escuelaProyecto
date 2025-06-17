@@ -4,7 +4,7 @@
 
 <h2>Administracion de Profesores</h2>
 <div class="table-responsive">
-    <table class="table table-secondary table-borderless rounded shadow border border-dark-subtle">
+    <table class="table table-light table-borderless rounded shadow border border-dark-subtle">
         <thead>
         <tr>
         <th scope="col">Carnet</th>
@@ -33,20 +33,23 @@
                     <a type="button" class="btn btn-danger m-1" href="{{ route('profesores.delete',$profesor->carnet) }}">
                         <b> <i class="bi bi-trash3-fill"></i>   
                     </a>
+                    <a type="button" class="btn btn-primary m-1" href="{{ route('materia_detalle.index',$profesor->carnet) }}">
+                        <i class="bi bi-journal-plus"></i>
+                    </a>
                 </td>
             </tr>              
-            {{-- <x-profesor.modal-editar 
+            <x-profesores.modal-editar 
             :carnet="$profesor->carnet"
             :nombre="$profesor->nombre"
             :apellido="$profesor->apellido"
             :correo="$profesor->correo"
             :nacimiento="$profesor->fechaNacimiento"
-            ></x-profesor.modal-editar>          --}}
+            :telefono="$profesor->telefono"
+            :titulo="$profesor->titulo"
+            ></x-profesores.modal-editar>         
             @endforeach
         </tbody>
     </table>
 </div>
-{{-- <x-usuarios.modal-crear></x-usuarios.modal-crear> --}}
-{{-- <x-estudiantes.modal-crear></x-usuarios.modal-crear> --}}
 @endsection()
 

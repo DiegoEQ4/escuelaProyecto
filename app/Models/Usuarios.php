@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Usuarios extends Model
+class Usuarios extends Authenticatable
 {
+    use Notifiable;
     //
     public $incrementing = true;
     protected $table = 'usuarios'; 
@@ -23,5 +26,9 @@ class Usuarios extends Model
     
     public $timestamps = true;
 
+
+    public function getAuthPassword() {
+    return $this->contrasena;
+    }
 
 }

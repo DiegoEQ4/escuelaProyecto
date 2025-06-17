@@ -16,10 +16,10 @@ return new class extends Migration
             $table->dateTime('fechaInicio');
             $table->dateTime('fechaFinal');
 
-            $table->foreignId('nateria')
-            ->references('idMateriaDetalle')
-            ->on('materia_detalle')-> onDelete('cascade');
-            
+            $table->foreignId('clase')
+            ->references('idClase')
+            ->on('clases')-> onDelete('cascade');
+             
             $table->timestamps();
             $table->integer('habilitado'); 
 
