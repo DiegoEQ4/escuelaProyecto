@@ -18,6 +18,9 @@
           <a class="nav-link" href="{{ route('grados.index') }}">Grados</a>
         </li>
         <li class="nav-item mx-2">
+          <a class="nav-link" href="{{ route('asistencias.index') }}">Asistencias</a>
+        </li>
+        <li class="nav-item mx-2">
           <a class="nav-link" href="{{ route('materias.index') }}">Materias</a>
         </li>
         <li class="nav-item mx-2 {{ session('tipo') != 2 ? 'd-none' : '' }}">

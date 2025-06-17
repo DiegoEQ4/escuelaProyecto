@@ -9,7 +9,7 @@ class Asistencias extends Model
     //
     public $incrementing = true; 
     protected $table = 'asistencias'; 
-    protected $primaryKey = 'idAsistencias'; 
+    protected $primaryKey = 'idAsistencia'; 
     protected $fillable = [
         'fechaInicio',
         'fechaFinal',

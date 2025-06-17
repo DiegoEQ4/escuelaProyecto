@@ -16,6 +16,9 @@ class AsistenciasController extends Controller
 
     //
     function index(){
-        return $asistencias = $this->service->obtenerTodo(); 
+        $asistencias = $this->service->obtenerAsitenciaxGrado(); 
+        return(view('asistencias.index',[
+            'asistencias' => $asistencias
+        ])); 
     }
 }

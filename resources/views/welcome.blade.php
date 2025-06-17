@@ -71,33 +71,4 @@
         </div>
     </div>
 
-    <!-- "Gráfico" de asistencia simulado con barra de progreso -->
-    <div class="card shadow-sm">
-        <div class="card-header bg-info text-white">
-            📈 Asistencia semanal
-        </div>
-        <div class="card-body">
-            <p>Lunes: 95%</p>
-            <div class="progress mb-3">
-                <div class="progress-bar bg-success" style="width: 95%;">95%</div>
-            </div>
-            <p>Martes: 100%</p>
-            <div class="progress mb-3">
-                <div class="progress-bar bg-success" style="width: 100%;">100%</div>
-            </div>
-            <p>Miércoles: 90%</p>
-            <div class="progress mb-3">
-                <div class="progress-bar bg-warning" style="width: 90%;">90%</div>
-            </div>
-            <p>Jueves: 85%</p>
-            <div class="progress mb-3">
-                <div class="progress-bar bg-danger" style="width: 85%;">85%</div>
-            </div>
-            <p>Viernes: 98%</p>
-            <div class="progress">
-                <div class="progress-bar bg-success" style="width: 98%;">98%</div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
