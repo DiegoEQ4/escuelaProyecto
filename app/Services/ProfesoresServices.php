@@ -35,7 +35,7 @@ class ProfesoresServices {
         return $profesor;
     }
 
-    function actualizarEstudiante(object $request)
+    function actualizarProfesor(object $request)
     {
         $profesor = $this->profesorModel->findOrFail($request->idUsuario);
         $profesor -> nombre = $request -> nombre;
@@ -48,7 +48,7 @@ class ProfesoresServices {
         // return $usuario;
     }
 
-    function deshabilitarUsuario(int $id)
+    function deshabilitarProfesor(int $id)
     {
         $usuario = $this->profesorModel->findOrFail($id);
         $usuario->habilitado = 0;   

@@ -7,8 +7,6 @@ use Illuminate\Support\Facades\Hash;
 class ClasesServices {
 
     private $clasesModel;
-
-
     public function __construct() {
         $this->clasesModel = new Clases();
     }
