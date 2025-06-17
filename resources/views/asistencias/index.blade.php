@@ -5,7 +5,7 @@
 @php
     $numeral = 1;
 @endphp
-
+{{-- {{ dd($clases) }} --}}
 <h2>Administracion de Asistencias</h2>
 
 <section class="text-end my-2">
@@ -43,7 +43,9 @@
     </tbody>
 </table>
 
-{{-- <x-asistencias.modal-crear></x-asistencias.modal-crear> --}}
+<x-asistencias.modal-crear
+    :clases="$clases"
+></x-asistencias.modal-crear>
 
 @endsection()
 

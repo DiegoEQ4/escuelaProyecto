@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
 
     //ASISTENCIAS 
     Route::get('/asistencias',[AsistenciasController::class,'index'])->name('asistencias.index');
+    Route::post('/asistencias/store',[AsistenciasController::class,'store'])->name('asistencias.store');
 
 
 

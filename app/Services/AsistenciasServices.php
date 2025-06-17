@@ -20,7 +20,7 @@ class AsistenciasServices {
         return $asistencias;
     }
     function obtenerAsitenciaxGrado(){
-
+        
         $asistencias = $this -> asistenciasModel   ->from('asistencias as a') 
         ->join('clases as c', 'c.idClase', '=', 'a.clase')
         ->join('materia_detalle as md', 'md.idMateria', '=', 'c.idMateriaDetalle')
@@ -31,17 +31,30 @@ class AsistenciasServices {
             'c.contenidoClase',
             'm.nombre as nombre_materia',
             'c.duracion',
+            'g.idGrado',
             'g.nombre',
             'a.fechaInicio',
             'a.fechaFinal',
-        )
-        // ->where('md.carnetProfesor',$carnet)
-        ->where('a.habilitado',1)
-        ->get();
-
+            )
+            ->where('a.habilitado',1)
+            ->get();
         return $asistencias;
     }
+    
+    function crearAsistencia($request){
+        $asistencia = new Asistencias();
+        $asistencia -> clase = (int) $request -> clase;
+        $asistencia -> fechaInicio = $request -> fechaInicio;
+        $asistencia -> fechaFinal = $request -> fechaFinal;
 
+        $asistencia -> save();
+
+        if($asistencia){
+
+        }
+
+        return $asistencia;
+    }
 
 
 
