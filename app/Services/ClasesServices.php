@@ -24,12 +24,18 @@ class ClasesServices {
     }
     function crearClase($request)
     {   
-        $clases  = new Clases();
-        $clases -> contenidoClase = $request -> contenido;
-        $clases -> duracion = $request -> duracion;
-        $clases -> idMateriaDetalle = $request -> detalle_materia;
-        $clases->save();
-        return $clases;
+        try {
+            $clases  = new Clases();
+            $clases -> contenidoClase = $request -> contenido;
+            $clases -> duracion = $request -> duracion;
+            $clases -> idMateriaDetalle = $request -> detalle_materia;
+            $clases->save();
+            return $clases;
+        } catch (\Throwable $th) {
+            session ()->flash('error', 'Error inesperado: ' . $th->getMessage());
+            return redirect()->back();
+        }
+
     }
 
     function deshabilitarClases(int $id)
