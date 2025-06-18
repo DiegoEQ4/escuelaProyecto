@@ -26,13 +26,12 @@ class AsistenciasController extends Controller
             'asistencias' => $asistencias,
             'clases' => $clasesSinAsistencia
         ])); 
-        return $clasesSinAsistencia;
+        // return $asistencias;
     }
 
     function store(Request $request){
 
-        return $asistencias = $this->service->crearAsistencia($request); 
-
-
+        $asistencias = $this->service->crearAsistencia($request); 
+        return back();
     }
 }

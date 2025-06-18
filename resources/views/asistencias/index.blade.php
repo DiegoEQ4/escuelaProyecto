@@ -36,7 +36,9 @@
             <td>{{ $asistencia -> fechaInicio }}</td>
             <td>{{ $asistencia -> fechaFinal }}</td>
             <td> 
-
+                <a type="button" class="btn btn-primary" href="{{ route('detalle_asistencia.index',$asistencia->idAsistencia) }}">
+                    <i class="bi bi-list-check"></i>
+                </a>
             </td>
         </tr>              
     @endforeach

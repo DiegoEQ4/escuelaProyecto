@@ -5,6 +5,7 @@
 use App\Http\Controllers\AsistenciasController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClasesController;
+use App\Http\Controllers\DetalleAsistenciaController;
 use App\Http\Controllers\GradosController;
 use App\Http\Controllers\MateriasController;
 use App\Http\Controllers\EstudiantesController;
@@ -32,8 +33,10 @@ Route::middleware(['auth'])->group(function () {
     //ASISTENCIAS 
     Route::get('/asistencias',[AsistenciasController::class,'index'])->name('asistencias.index');
     Route::post('/asistencias/store',[AsistenciasController::class,'store'])->name('asistencias.store');
-
-
+    
+    //DETALLE ASISTENCIA
+    Route::get('/detalle_asistencia/{id}',[DetalleAsistenciaController::class,'index'])->name('detalle_asistencia.index');
+    Route::post('/detalle_asistencia/store',[DetalleAsistenciaController::class,'store'])->name('detalle_asistencia.store');
 
     //MANEJO DDE MATERIAS 
     Route::get('/materias',[MateriasController::class,'index'])->name('materias.index');
