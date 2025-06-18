@@ -12,6 +12,7 @@ use App\Http\Controllers\EstudiantesController;
 use App\Http\Controllers\EstudiantesGradoController;
 use App\Http\Controllers\MateriaDetalleController;
 use App\Http\Controllers\ProfesoresController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\VistasController;
 use App\Http\Controllers\UsuariosController;
 
@@ -37,6 +38,8 @@ Route::middleware(['auth'])->group(function () {
     //DETALLE ASISTENCIA
     Route::get('/detalle_asistencia/{id}',[DetalleAsistenciaController::class,'index'])->name('detalle_asistencia.index');
     Route::post('/detalle_asistencia/store',[DetalleAsistenciaController::class,'store'])->name('detalle_asistencia.store');
+    
+    Route::get('/detalle_asistencia/reporte/{id}',[ReportController::class,'reporteAsistencia'])->name('detalle_asistencia.reporte');
 
     //MANEJO DDE MATERIAS 
     Route::get('/materias',[MateriasController::class,'index'])->name('materias.index');
