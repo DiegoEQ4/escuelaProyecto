@@ -1,3 +1,4 @@
+@props(['clases'])
 <!-- Modal -->
 <div class="modal fade" id="crearModal" tabindex="-1" aria-labelledby="multiStepModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -7,24 +8,28 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       <div class="modal-body">
-        <form id="formMultiPaso" action="{{ route('materias.store') }}" method="POST">
+        <form id="formMultiPaso" action="{{ route('asistencias.store') }}" method="POST">
           @csrf
           <div id="step1">
             <section id="forms-controls">
               <div class="row">
                 <div class="row">
                   <div class="mb-3 col-12">
-                    <label class="form-label">Nombre de Materia</label>
-                    <input type="text" class="form-control" name="nombre" required>
+                    <label class="form-label">Clase</label>
+                    <select name="clase" class="form-select">
+                      @foreach ( $clases as $clase )                          
+                        <option value="{{ $clase -> idClase }}">{{ $clase -> contenidoClase }} - {{ $clase -> nombre_materia }} - {{ $clase -> nombre_grado }} {{$clase -> seccion}}</option>
+                      @endforeach
+                    </select>
                   </div>
                 </div>
                 <div class="mb-3 col-12">
-                  <label class="form-label">Descripcion</label>
-                  <input type="text" class="form-control" name="descripcion" required>
+                  <label class="form-label">Fecha de inicio</label>
+                  <input type="datetime-local" class="form-control" name="fechaInicio" required>
                 </div>
-                <div class="mb-3 col-6">
-                  <label class="form-label">Duracion (formato en meses)</label>
-                  <input type="number" class="form-control" name="duracion" required>
+                <div class="mb-3 col-12">
+                  <label class="form-label">Fecha de fin</label>
+                  <input type="datetime-local" class="form-control" name="fechaFinal" required>
                 </div>
               </div>
             </section>

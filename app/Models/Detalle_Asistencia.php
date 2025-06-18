@@ -13,6 +13,7 @@ class Detalle_Asistencia extends Model
     protected $fillable = [
         'carnetEstudiante',
         'idAsistencia',
+        'estado', //0 INDEFINIDO || 1 PRESENTE || 2 PERMISO || 3 AUSENTE
     ];
     
     protected $attributes = [

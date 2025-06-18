@@ -1,16 +1,19 @@
 <?php
 namespace App\Services;
 
+use App\Models\Clases;
 use App\Models\Grados;
 use Illuminate\Support\Facades\Hash;
 
 class GradosServices {
 
     private $gradosModel;
+    private $clasesModel;
 
 
     public function __construct() {
         $this->gradosModel = new Grados();
+        $this->clasesModel = new Clases();
     }
     
     function obtenerTodos()
@@ -53,7 +56,20 @@ class GradosServices {
         return 'hecho';
     }
 
+    function obtenerGradoxClase(int $clase){
+        $grado = $this->clasesModel-> from('clases as c')
+        ->join('materia_detalle as md','c.idMateriaDetalle' ,'=','md.idMateriaDetalle')
+        ->join('grados as g','md.idGrado' ,'=','g.idGrado')
+        // ->join('grado as g','md.idGrado' ,'=','g.idGrado')
+        ->select(
+            'g.idGrado'
+        )
+        ->where('c.idClase', $clase)    
+        ->where('g.habilitado', 1)
+        ->first();
 
+        return $grado;
+    } 
 
 }
 

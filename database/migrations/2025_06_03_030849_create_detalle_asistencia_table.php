@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('detalle_asistencia', function (Blueprint $table) {
             $table->id('idDetalleAsistencia');
             $table->integer('estado');
-            $table->string('detalle');
+            $table->string('detalle')->nullable();
 
             $table->integer('carnetEstudiante');
             $table->foreign('carnetEstudiante')
@@ -24,8 +24,8 @@ return new class extends Migration
             $table->foreignId('idAsistencia')
             ->references('idAsistencia')
             ->on('asistencias')-> onDelete('cascade');
-            $table->timestamps();
 
+            $table->timestamps();
             $table->integer('habilitado'); 
         });
     }
