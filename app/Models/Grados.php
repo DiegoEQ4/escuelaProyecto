@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Grados extends Model
 {
-    //
-        //    
     public $incrementing = false;
     protected $table = 'grados'; 
     protected $primaryKey = 'idGrado'; 
