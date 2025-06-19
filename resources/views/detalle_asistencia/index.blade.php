@@ -9,6 +9,10 @@
 <h2>Administracion de Asistencias</h2>
 
 
+@if(session('error'))
+    {{ session('error') }}
+@endif
+
 <section class="text-left my-2">
     <a type="button" href="{{ route('asistencias.index') }}" class="btn btn-danger">
         <b> <i class="bi bi-arrow-left-circle"></i> Atras </b>

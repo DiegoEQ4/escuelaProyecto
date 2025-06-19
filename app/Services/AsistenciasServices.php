@@ -67,6 +67,13 @@ class AsistenciasServices {
         return $estudiantes;
     }
 
+        function deshabilitarAsistencia(int $id)
+    {
+        $usuario = $this->asistenciasModel->findOrFail($id);
+        $usuario->habilitado = 0;
+        $usuario->save();
+        return 'hecho';
+    }
 
 
 

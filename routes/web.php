@@ -14,7 +14,7 @@ use App\Http\Controllers\MateriaDetalleController;
 use App\Http\Controllers\ProfesoresController;
 use App\Http\Controllers\VistasController;
 use App\Http\Controllers\UsuariosController;
-use App\Http\Controllers\InicioController;
+use App\Http\Controllers\IncioController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
     //ASISTENCIAS 
     Route::get('/asistencias',[AsistenciasController::class,'index'])->name('asistencias.index');
     Route::post('/asistencias/store',[AsistenciasController::class,'store'])->name('asistencias.store');
+    Route::get('/asistencias/delete/{id}',[AsistenciasController::class,'delete'])->name('asistencias.delete');
     
     //DETALLE ASISTENCIA
     Route::get('/detalle_asistencia/{id}',[DetalleAsistenciaController::class,'index'])->name('detalle_asistencia.index');
@@ -89,7 +90,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/clases/store',[ClasesController::class,'store'])->name('clases.store');
     Route::get('/clases/delete/{id}',[ClasesController::class,'delete'])->name('clases.delete');
 
-    Route::get('/index', [InicioController::class, 'index']) ->name('dashboard');
+    Route::get('/index', [IncioController::class, 'index']) ->name('dashboard');
 });
 
 

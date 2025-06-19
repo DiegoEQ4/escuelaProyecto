@@ -34,4 +34,9 @@ class AsistenciasController extends Controller
         $asistencias = $this->service->crearAsistencia($request); 
         return back();
     }
+    function delete(int $id){
+
+        $asistencias = $this->service->deshabilitarAsistencia($id); 
+        return back();
+    }
 }

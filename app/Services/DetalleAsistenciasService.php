@@ -28,29 +28,47 @@ class DetalleAsistenciasService {
     
     function crearDetalle(int $grado, int $idAsistencia){
 
-        $estudiantes = $this->estudiantesServices->obtenerEstudiantePorGrado($grado);
-        foreach($estudiantes as $estudiante){
-            $detalleAsistencia = new Detalle_Asistencia();
-            $detalleAsistencia -> carnetEstudiante = $estudiante -> carnet;
-            $detalleAsistencia -> estado = 0;
-            $detalleAsistencia -> detalle = 'Inserta una observacion';
-            $detalleAsistencia -> idAsistencia = $idAsistencia;
-            $detalleAsistencia -> save();
+        try {
+            //code...
+            $estudiantes = $this->estudiantesServices->obtenerEstudiantePorGrado($grado);
+            if($estudiantes != null){
+                foreach($estudiantes as $estudiante){
+                $detalleAsistencia = new Detalle_Asistencia();
+                $detalleAsistencia -> carnetEstudiante = $estudiante -> carnet;
+                $detalleAsistencia -> estado = 0;
+                $detalleAsistencia -> detalle = 'Inserta una observacion';
+                $detalleAsistencia -> idAsistencia = $idAsistencia;
+                $detalleAsistencia -> save();
+                return $detalleAsistencia;
+            }
+            }else{
+                session ()->flash('error', 'No hay estudiantes en ese grado');
+                return redirect()->back();
+            }
+
+        } catch (\Throwable $th) {
+            session ()->flash('error', 'Error inesperado: ' . $th->getMessage());
+            return redirect()->back();
         }
-        return $detalleAsistencia;
+
     }
 
 
     function estadoAsistencia($request){
-
-        foreach($request->detalle as $detalle){
-            $detalleAsistencia = $this->detalleAsistenciaModel->findOrFail($detalle['idDetalleAsistencia']);
-            $detalleAsistencia->estado = (int)$detalle['estado'];
-            $detalleAsistencia->detalle = $detalle['detalle'];
-            // $detalleAsistencia->idAsistencia = $detalle->idAsistencia;
-            $detalleAsistencia->save();
+        try {
+            foreach($request->detalle as $detalle){
+                $detalleAsistencia = $this->detalleAsistenciaModel->findOrFail($detalle['idDetalleAsistencia']);
+                $detalleAsistencia->estado = (int)$detalle['estado'];
+                $detalleAsistencia->detalle = $detalle['detalle'];
+                // $detalleAsistencia->idAsistencia = $detalle->idAsistencia;
+                $detalleAsistencia->save();
+                return $detalleAsistencia;
+            }
+        } catch (\Throwable $th) {
+            session ()->flash('error', 'Error inesperado: ' . $th->getMessage());
+            return redirect()->back();
         }
-        return $detalleAsistencia;
+
     }
 
 
