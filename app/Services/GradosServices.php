@@ -25,14 +25,22 @@ class GradosServices {
 
     function crearGrado($request)
     {
-        $grados = new Grados();
-        $grados -> nombre = $request -> nombre;
-        $grados -> seccion = $request -> seccion;
-        $grados -> cupos = (int)$request-> cupos;
-        $grados -> orden = (int)$request-> orden;
-        $grados -> tiempo = (int)$request-> tiempo;
-        $grados->save();
+        try {
+            //code...
+            $grados = new Grados();
+            $grados -> nombre = $request -> nombre;
+            $grados -> seccion = $request -> seccion;
+            $grados -> cupos = (int)$request-> cupos;
+            $grados -> orden = (int)$request-> orden;
+            $grados -> tiempo = (int)$request-> tiempo;
+            $grados->save();
         return $grados;
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            session ()->flash('error', 'Error inesperado: ' . $th->getMessage());
+            return redirect()->back();
+        }
     }
 
     function actualizarGrados(object $request)

@@ -45,6 +45,8 @@
                 </a>
                 <a type="button" class="btn btn-danger" href="{{ route('asistencias.delete',$asistencia->idAsistencia) }}">
                      <i class="bi bi-trash3-fill"></i>
+                <a type="button" class="btn btn-primary" href="{{ route('detalle_asistencia.reporte',$asistencia->idAsistencia) }}">
+                    <i class="bi bi-filetype-pdf"></i>
                 </a>
             </td>
         </tr>              

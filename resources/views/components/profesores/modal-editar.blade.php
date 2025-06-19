@@ -41,11 +41,11 @@
                 <div class="row">
                     <div class="mb-3 col-6">
                       <label class="form-label">Telefono</label>
-                      <input type="email" class="form-control" name="telefono" value="{{ $telefono }}" required>
+                      <input type="text" class="form-control" name="telefono" value="{{ $telefono }}">
                     </div>
                     <div class="mb-3 col-6">
                       <label class="form-label">Titulo</label>
-                      <input type="email" class="form-control" name="correo" value="{{ $titulo }}" required>
+                      <input type="text" class="form-control" name="correo" value="{{ $titulo }}" >
                     </div>
                 </div>
               </div>
