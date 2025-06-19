@@ -1,74 +1,166 @@
-@extends('layout.app')
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestión Escolar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5 text-center">
+        <h1 class="mb-4">Bienvenido al Sistema de Gestión Escolar</h1>
+        <p class="mb-4">Selecciona una opción para administrar los datos:</p>
 
-@section('content')
-<div class="container mt-4">
-    <h2 class="mb-3">¡Bienvenido/a👋</h2>
-    <p class="text-muted">Hoy es {{ \Carbon\Carbon::now()->locale('es')->isoFormat('dddd D [de] MMMM [de] YYYY') }}</p>
-
-    <!-- Cards resumen -->
-    <div class="row g-3 mb-4">
-        <div class="col-md-4">
-            <div class="card border-primary shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title text-primary">📚 Materias asignadas</h5>
-                    <p class="card-text fs-4">3</p>
-                </div>
+        <div class="row justify-content-center g-3">
+            <div class="col-md-4">
+                <a href="{{ route('grados.index') }}" class="btn btn-primary w-100">🧑‍🏫 GRADOS</a>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-success shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title text-success">📅 Clases hoy</h5>
-                    <p class="card-text fs-4">2</p>
-                </div>
+            <div class="col-md-4">
+                <a href="{{ route('materias.index') }}" class="btn btn-secondary w-100">📚 MATERIAS</a>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-warning shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title text-warning">📝 Asistencias pendientes</h5>
-                    <p class="card-text fs-4">1</p>
-                </div>
+            <div class="col-md-4">
+                <a href="{{ route('clases.index') }}" class="btn btn-success w-100">📅 CLASES</a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ route('estudiantes.index') }}" class="btn btn-warning w-100">👨‍🎓 ESTUDIANTES</a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ route('usuarios.index') }}" class="btn btn-dark w-100">🧑‍💼 USUARIOS</a>
             </div>
         </div>
     </div>
+    <div class="container mt-5">
+        <h1 class="text-center mb-5">TABLAS DE REGISTRO</h1>
 
-    <!-- Tabla simple sin JS -->
-    <div class="card mb-4 shadow-sm">
-        <div class="card-header bg-secondary text-white">
-            📋 Clases del día
-        </div>
-        <div class="card-body p-0">
-            <table class="table table-striped mb-0">
-                <thead>
+        <!-- Tabla Grados -->
+
+        <div class="mb-5">
+            <h3>Grados Registrados</h3>
+            <table class="table table-bordered">
+                <thead class="table-dark">
                     <tr>
-                        <th>Hora</th>
-                        <th>Materia</th>
-                        <th>Grado</th>
-                        <th>Asistencia</th>
+                        <th>Nombre del Grado</th>
+                        <th>Sección</th>
+                        <th>Cupos</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>08:00 AM</td>
-                        <td>Matemática</td>
-                        <td>9° A</td>
-                        <td><span class="badge bg-success">Registrada</span></td>
-                    </tr>
-                    <tr>
-                        <td>10:00 AM</td>
-                        <td>Ciencias</td>
-                        <td>9° B</td>
-                        <td>
-                            <form action="#" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-sm btn-outline-danger">Registrar</button>
-                            </form>
-                        </td>
-                    </tr>
+                    @forelse($grados as $grado)
+                        <tr>
+                            <td>{{ $grado->nombre }}</td>
+                            <td>{{ $grado->seccion }}</td>
+                            <td>{{ $grado->cupos }}</td>
+                        </tr>
+                    @empty
+                        <tr><td colspan="3">No hay grados registrados.</td></tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
-    </div>
 
-@endsection
+        <!-- Tabla Materias -->
+        <div>
+            <h3>Materias Disponibles</h3>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Duración (meses)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($materias as $materia)
+                        <tr>
+                            <td>{{ $materia->nombre }}</td>
+                            <td>{{ $materia->descripcion }}</td>
+                            <td>{{ $materia->duracion_meses }}</td>
+                        </tr>
+                    @empty
+                        <tr><td colspan="3">No hay materias registradas.</td></tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+<!--
+         Tabla Clases 
+        <div>
+            <h3>Clases</h3>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Duración (meses)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    forelse($)
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    empty
+                        <tr><td colspan="3">No hay clases registradas.</td></tr>
+                    endforelse
+                </tbody>
+            </table>
+        </div>
+
+         Tabla Estudiantes 
+        <div>
+            <h3>Estudiantes registrados</h3>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Carnet</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>ID Grado</th>
+                        <th>ID Usuario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    forelse()
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    empty
+                        <tr><td colspan="3">No hay estudiantes registrados.</td></tr>
+                    endforelse
+                </tbody>
+            </table>
+        </div>
+
+         Tabla Usuarios 
+        <div>
+            <h3>Materias Disponibles</h3>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nombre del usuario</th>
+                        <th>Tipo de usuario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    forelse()
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    empty
+                        <tr><td colspan="3">No hay usuarios registrados</td></tr>
+                    endforelse
+                </tbody>
+            </table>
+        </div> -->
+    </div>
+</body>
+</html>
+
+>>>>>>> Stashed changes

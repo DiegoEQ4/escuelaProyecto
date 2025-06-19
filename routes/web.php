@@ -14,6 +14,7 @@ use App\Http\Controllers\MateriaDetalleController;
 use App\Http\Controllers\ProfesoresController;
 use App\Http\Controllers\VistasController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\InicioController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -28,7 +29,6 @@ Route::post('/login/auth', [AuthController::class, 'auth'])->name('login.auth');
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/login/auth/logout', [AuthController::class, 'logout'])->name('login.logout');
-    Route::get('/index',[VistasController::class,'index'])->name('dashboard');
 
     //ASISTENCIAS 
     Route::get('/asistencias',[AsistenciasController::class,'index'])->name('asistencias.index');
@@ -88,4 +88,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/clases',[ClasesController::class,'index'])->name('clases.index');
     Route::post('/clases/store',[ClasesController::class,'store'])->name('clases.store');
     Route::get('/clases/delete/{id}',[ClasesController::class,'delete'])->name('clases.delete');
+
+    Route::get('/index', [InicioController::class, 'index']) ->name('dashboard');
 });
+
+
