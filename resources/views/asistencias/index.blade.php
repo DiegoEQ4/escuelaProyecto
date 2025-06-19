@@ -8,6 +8,10 @@
 {{-- {{ dd($clases) }} --}}
 <h2>Administracion de Asistencias</h2>
 
+@if(session('error'))
+    {{ session('error') }}
+@endif
+
 <section class="text-end my-2">
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearModal">
          <b> <i class="bi bi-plus-circle"></i> Agregar </b>
@@ -39,6 +43,8 @@
                 <a type="button" class="btn btn-primary" href="{{ route('detalle_asistencia.index',$asistencia->idAsistencia) }}">
                     <i class="bi bi-list-check"></i>
                 </a>
+                <a type="button" class="btn btn-danger" href="{{ route('asistencias.delete',$asistencia->idAsistencia) }}">
+                     <i class="bi bi-trash3-fill"></i>
                 <a type="button" class="btn btn-primary" href="{{ route('detalle_asistencia.reporte',$asistencia->idAsistencia) }}">
                     <i class="bi bi-filetype-pdf"></i>
                 </a>
